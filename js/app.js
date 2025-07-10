@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // 设置默认API选择（如果是第一次加载）
     if (!localStorage.getItem('hasInitializedDefaults')) {
         // 默认选中资源
-        selectedAPIs = ["tyyszy", "bfzy", "dyttzy", "ruyi"];
+        selectedAPIs = ["tyyszy","dyttzy", "bfzy", "ruyi","heimuer","dbzy"];
         localStorage.setItem('selectedAPIs', JSON.stringify(selectedAPIs));
 
         // 默认选中过滤开关
@@ -962,8 +962,8 @@ async function showDetails(id, vod_name, sourceCode) {
                         </button>
                         <span class="text-gray-400 text-sm">共 ${data.episodes.length} 集</span>
                     </div>
-                    <button onclick="copyLinks()" class="px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white rounded text-sm transition-colors">
-                        复制链接
+                    <button  class="px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white rounded text-sm transition-colors">
+                        点击下方选集播放
                     </button>
                 </div>
                 <div id="episodesGrid" class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-2">
