@@ -41,12 +41,6 @@ function loadUserTags() {
 // 保存用户标签
 function saveUserTags() {
     try {
-        if (movieTags=="伦理片") {
-            showToast('你是傻逼吧', 'error');
-        }
-        if (tvTags=="伦理片") {
-            showToast('你是傻逼吧', 'error');
-        }
         localStorage.setItem('userMovieTags', JSON.stringify(movieTags));
         localStorage.setItem('userTvTags', JSON.stringify(tvTags));
     } catch (e) {
@@ -280,7 +274,7 @@ function renderDoubanMovieTvSwitch() {
             tvToggle.classList.add('text-gray-300');
             
             doubanMovieTvCurrentSwitch = 'movie';
-            doubanCurrentTag = '热门';
+            doubanCurrentTag = '经典';
 
             // 重新加载豆瓣内容
             renderDoubanTags(movieTags);
@@ -701,6 +695,10 @@ function addTag(tag) {
         .replace(/</g, '&lt;')
         .replace(/>/g, '&gt;')
         .replace(/"/g, '&quot;');
+
+    if(safeTag=="伦理片"||safeTag=="伦理"){
+        showToast('傻逼别有我的影视站!', 'warning');
+    }
     
     // 确定当前使用的是电影还是电视剧标签
     const isMovie = doubanMovieTvCurrentSwitch === 'movie';
@@ -756,7 +754,7 @@ function deleteTag(tag) {
         
         // 如果当前选中的是被删除的标签，则重置为"热门"
         if (doubanCurrentTag === tag) {
-            doubanCurrentTag = '热门';
+            doubanCurrentTag = '经典';
             doubanPageStart = 0;
             renderRecommend(doubanCurrentTag, doubanPageSize, doubanPageStart);
         }
@@ -781,7 +779,7 @@ function resetTagsToDefault() {
     }
     
     // 设置当前标签为热门
-    doubanCurrentTag = '热门';
+    doubanCurrentTag = '经典';
     doubanPageStart = 0;
     
     // 保存到本地存储
