@@ -14,9 +14,7 @@ function loadUserTags() {
         // 尝试从本地存储加载用户保存的标签
         const savedMovieTags = localStorage.getItem('userMovieTags');
         const savedTvTags = localStorage.getItem('userTvTags');
-        if (savedMovieTags=="伦理片") {
-            showToast('你是傻逼吧', 'error');
-        }
+        
         
         // 如果本地存储中有标签数据，则使用它
         if (savedMovieTags) {
@@ -43,6 +41,12 @@ function loadUserTags() {
 // 保存用户标签
 function saveUserTags() {
     try {
+        if (movieTags=="伦理片") {
+            showToast('你是傻逼吧', 'error');
+        }
+        if (tvTags=="伦理片") {
+            showToast('你是傻逼吧', 'error');
+        }
         localStorage.setItem('userMovieTags', JSON.stringify(movieTags));
         localStorage.setItem('userTvTags', JSON.stringify(tvTags));
     } catch (e) {
@@ -52,7 +56,7 @@ function saveUserTags() {
 }
 
 let doubanMovieTvCurrentSwitch = 'movie';
-let doubanCurrentTag = '热门';
+let doubanCurrentTag = '经典';
 let doubanPageStart = 0;
 const doubanPageSize = 16; // 一次显示的项目数量
 
