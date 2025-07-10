@@ -16,7 +16,6 @@ function loadUserTags() {
         const savedTvTags = localStorage.getItem('userTvTags');
         if (savedMovieTags=="伦理片") {
             showToast('你是傻逼吧', 'error');
-            alter(“你不配用!”)
         }
         
         // 如果本地存储中有标签数据，则使用它
